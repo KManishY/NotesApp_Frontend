@@ -3,8 +3,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { deletedata, editdata, getAllData } from "../api.js";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+// import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+// import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 function Notes() {
 	const [loading, setLoading] = useState(false);
 	const [notes, setNotes] = useState([]);
@@ -49,7 +49,7 @@ function Notes() {
 									</Typography>
 								</div>
 								<Divider orientation='vertical' flexItem />
-								<div>
+								{/* <div>
 									<DeleteForeverOutlinedIcon
 										onClick={() => handleDelete(note._id)}
 									/>
@@ -59,11 +59,16 @@ function Notes() {
 											sx={{ color: "black" }}
 										/>
 									</Link>
-								</div>
+								</div> */}
 
 								<p>{note.Note}</p>
 								<p>{note.Tag}</p>
-								{/* <button onClick={() => handleDelete(note._id)}> */}
+								<button onClick={() => handleDelete(note._id)}>
+									Delete
+								</button>
+								<Link to={`/editNotes/${note._id}`}>
+									<button>Update</button>
+								</Link>
 							</div>
 						);
 					})}
